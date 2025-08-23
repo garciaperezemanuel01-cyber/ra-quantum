@@ -1,28 +1,64 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RA Quantum - Aula 3D</title>
-  <!-- Librerías -->
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
-  <style> body { margin:0; overflow:hidden; } </style>
-</head>
-<body>
-  <a-scene embedded arjs>
-    <!-- Marcador HIRO -->
-    <a-marker preset="hiro">
-      <!-- Modelo 3D (aula) -->
-      <a-entity
-        gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Classroom/glTF/Classroom.gltf"
-        scale="0.2 0.2 0.2"
-        position="0 0 0"
-        rotation="0 90 0">
-      </a-entity>
-      <a-text value="Curso EXANI III" position="-1 1 0" color="yellow"></a-text>
-    </a-marker>
-    <a-entity camera = "fov: 90"></a-entity>
-  </a-scene>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RA con Zoom Ajustable</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
+    <style>
+      /* Estilos del slider */
+      #zoomControl {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70%;
+        z-index: 999;
+      }
+      label {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px black;
+      }
+    </style>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <!-- Escena RA -->
+    <a-scene embedded arjs>
+      <a-marker preset="hiro">
+        <!-- Modelo 3D -->
+        <a-entity
+          id="aula"
+          gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Classroom/glTF/Classroom.gltf"
+          scale="0.2 0.2 0.2"
+          position="0 0 0"
+          rotation="0 90 0">
+        </a-entity>
+
+        <!-- Texto flotante -->
+        <a-text value="Quantum te da la Bienvenida" position="-1 1 0" color="yellow"></a-text>
+      </a-marker>
+
+      <!-- Cámara con FOV inicial -->
+      <a-entity id="camara" camera="fov: 85"></a-entity>
+    </a-scene>
+
+    <!-- Etiqueta y slider -->
+    <label for="zoomControl">Ajustar Zoom (FOV):</label>
+    <input type="range" id="zoomControl" min="60" max="120" value="85">
+    
+    <script>
+      const cam = document.querySelector("#camara").getObject3D("camera");
+      const slider = document.getElementById("zoomControl");
+
+      slider.addEventListener("input", () => {
+        cam.fov = slider.value;
+        cam.updateProjectionMatrix();
+      });
+    </script>
+  </body>
 </html>
