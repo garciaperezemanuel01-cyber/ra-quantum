@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Entorno Virtual en AR</title>
+    <title>Sala Virtual en AR</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
   </head>
@@ -12,13 +12,15 @@
       <!-- Marcador Hiro -->
       <a-marker preset="hiro">
         
-        <!-- Entorno 360° (esfera invertida con textura) -->
-        <a-entity>
-          <a-sky src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"></a-sky>
+        <!-- Sala 3D virtual -->
+        <a-entity 
+          gltf-model="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/Avocado/glTF/Avocado.gltf" 
+          scale="0.1 0.1 0.1" 
+          position="0 0 0">
         </a-entity>
 
-        <!-- Texto flotante dentro del entorno -->
-        <a-text value="Bienvenido al Aula Virtual" position="0 2 -3" color="yellow"></a-text>
+        <!-- Texto dentro de la sala -->
+        <a-text value="Bienvenido a la Sala Virtual" position="0 2 -3" color="cyan"></a-text>
       </a-marker>
 
       <!-- Cámara -->
