@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Sala Virtual en AR</title>
+    <title>Prueba AR con Cubo</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
   </head>
@@ -12,19 +12,19 @@
       <!-- Marcador Hiro -->
       <a-marker preset="hiro">
         
-        <!-- Sala 3D virtual -->
+        <!-- Modelo 3D (cubo de prueba) -->
         <a-entity 
-          gltf-model="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/Avocado/glTF/Avocado.gltf" 
-          scale="0.1 0.1 0.1" 
+          gltf-model="modelos/cubo.glb"
+          scale="0.5 0.5 0.5"
           position="0 0 0">
         </a-entity>
 
-        <!-- Texto dentro de la sala -->
-        <a-text value="Bienvenido a la Sala Virtual" position="0 2 -3" color="cyan"></a-text>
+        <!-- Texto de referencia -->
+        <a-text value="Cubo de prueba en AR" position="0 1 -2" color="cyan"></a-text>
       </a-marker>
 
       <!-- Cámara -->
-      <a-entity camera = "fov: 85"></a-entity>
+      <a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
