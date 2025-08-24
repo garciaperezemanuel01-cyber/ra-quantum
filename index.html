@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RA Quantum - Aula 3D</title>
-  <!-- Librerías -->
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
-  <style> body { margin:0; overflow:hidden; } </style>
-</head>
-<body>
-  <a-scene embedded arjs>
-    <!-- Marcador HIRO -->
-    <a-marker preset="hiro">
-      <!-- Modelo 3D (aula) -->
-      <a-entity
-        gltf-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Classroom/glTF/Classroom.gltf"
-        scale="0.2 0.2 0.2"
-        position="0 0 0"
-        rotation="0 90 0">
-      </a-entity>
-      <a-text value="QUANTUM" position="-1 1 0" color="yellow"></a-text>
-    </a-marker>
-    <a-entity camera = "fov: 85"></a-entity>
-  </a-scene>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Entorno Virtual en AR</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+      
+      <!-- Marcador Hiro -->
+      <a-marker preset="hiro">
+        
+        <!-- Entorno 360° (esfera invertida con textura) -->
+        <a-entity>
+          <a-sky src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"></a-sky>
+        </a-entity>
+
+        <!-- Texto flotante dentro del entorno -->
+        <a-text value="Bienvenido al Aula Virtual" position="0 2 -3" color="yellow"></a-text>
+      </a-marker>
+
+      <!-- Cámara -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
 </html>
